@@ -507,6 +507,13 @@ jet_data = {
     "gameTitle": "2008 – Redux"
 }
 
+if (!campaignTrail_temp.chime) {
+  var music = new Audio('https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/Microsoft%20Windows%20Vista%20Startup%20Sound.mp3');
+  music.loop = false;
+  music.volume = 0.5;
+  music.play();
+  campaignTrail_temp.chime = true;
+}
 
 //Achievements
 campaignTrail_temp.achievements = {
