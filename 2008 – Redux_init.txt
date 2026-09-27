@@ -497,6 +497,32 @@ jet_data = {
     "gameTitle": "2008 – Redux"
 }
 
+
+//Achievements
+campaignTrail_temp.achievements = {
+    "I'm With Her": {
+        "image": "https://file.garden/aQrk4ZgQJCx_hnkl/Achievements/Nation", //FIX
+        "description": "As Hillary Clinton, win the 2008 election.",
+        "cannotBeCheated": true
+    },
+    "Country First": {
+        "image": "https://file.garden/aQrk4ZgQJCx_hnkl/Achievements/Nation", //FIX
+        "description": "As John McCain, win the 2008 election.",
+        "cannotBeCheated": true
+    },
+    "Hoosier": {
+        "image": "https://file.garden/aQrk4ZgQJCx_hnkl/Achievements/Nation",
+        "description": "As Hillary Clinton, win the election with Evan Bayh as your running mate.", //FIX
+        "cannotBeCheated": true
+    },
+    "Lipstick": {
+        "image": "https://file.garden/aQrk4ZgQJCx_hnkl/Achievements/Nation",
+        "description": "As John McCain, win the election with Sarah Palin as your running mate.",
+        "cannotBeCheated": true
+    }
+}
+
+
 //#startcode
 
 
