@@ -500,7 +500,7 @@ jet_data = {
     "windowColor": "#ffffff",
     "containerColor": "#ffffff",
     "innerWindowColor": "#ffffff",
-    "bannerImageUrl": "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/Screenshot%202026-09-27%20at%2010.21.27%E2%80%AFam.png",
+    "bannerImageUrl": "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/NewHomeBanner",
     "backgroundImageUrl": "https://coolbackgrounds.io/images/backgrounds/white/pure-white-background-85a2a7fd.jpg",
     "endingTextColor": "#000000",
     "customQuote": "",
