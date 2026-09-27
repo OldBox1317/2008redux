@@ -35674,3 +35674,13 @@ campaignTrail_temp.jet_data = [{
 }
 ]
 
+const css = `
+  #campaign_sign {
+    background-color: lightblue !important;
+    border: 2px solid midnightblue !important;
+  }
+`;
+
+const style = document.createElement("style");
+style.textContent = css;
+document.head.appendChild(style);
