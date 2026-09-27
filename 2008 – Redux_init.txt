@@ -3,7 +3,7 @@ campaignTrail_temp.election_json = [
         "model": "campaign_trail.election",
         "pk": 9,
         "fields": {
-            "year": 2000,
+            "year": 2008,
             "summary": "<p>After eight years of President George W. Bush, the United States of America stands at a crossroads as it faces wars in Iraq and Afghanistan, alongside an impending financial crisis which will change the nation and the world as we know it.</p><p><ul><li>Hillary Clinton hails from New York and is the former First Lady of the United States as well as New York Senator. She seeks to unite the Democratic Party following a bruising primary campaign against Senator Barack Obama.<ul><li>John McCain is a Senator from Arizona and Vietnam P.O.W. Due to the unpopularity of President Bush and his actions, McCain faces an uphill battle to win the election and the voters trust in the Republican Party.</p>",
             "image_url": "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/hillaryandjohn",
             "winning_electoral_vote_number": 270,
@@ -595,7 +595,7 @@ const css = `
   body h3 {
     font-size: 1.17em !important;
     font-family: inherit !important;
-    color: #000000 !important;
+    color: #ffffff !important;
   }
 
   .custom-h3 {
@@ -667,7 +667,8 @@ const css = `
   }
 
   .inner_window_question h3 {
-    background: #e8b3b6
+    background: linear-gradient(45deg, #2972b6, #83c582);
+    
   }
 
   /* Layout components */
@@ -682,6 +683,15 @@ const css = `
   #map_footer {
     position: relative;
     top: 20px;
+  }
+
+  .inner_window_sign_display {
+    background: darkcyan;
+  }
+
+  .inner_window_front h3 {
+    background: darkcyan;
+    padding: 0.2em;
   }
 
   .inner_window_question {
