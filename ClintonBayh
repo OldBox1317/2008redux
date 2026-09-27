@@ -928,7 +928,7 @@ campaignTrail_temp.answers_json = [
         "pk": 3501,
         "fields": {
             "question": 397,
-            "description": "Joe Lieberman is a historic choice for Vice President, and a valued member of the Democratic Party."
+            "description": "We can’t just ignore Obama supporters can we? I think that if we get Senator Obama to campaign with us often—especially in the Midwest—we will be able to get their votes come November."
         }
     },
     {
@@ -936,7 +936,15 @@ campaignTrail_temp.answers_json = [
         "pk": 3502,
         "fields": {
             "question": 397,
-            "description": "Joe Lieberman is an independent thinker who has challenged people of all views. These are the people I want in my administration."
+            "description": "There is definitely a place for Obama and his supporters in our campaign. Our online campaign was very weak in comparison to Obama’s so I think that would be a good place for us to start."
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 12240,
+        "fields": {
+            "question": 397,
+            "description": "Just get our allies to emphasise that a vote for a third party is a vote for the Republicans and four more years of the ongoing chaos, that will surely get his supporters to come around and vote for us."
         }
     }
 ]
@@ -35658,7 +35666,11 @@ campaignTrail_temp.jet_data = [{
         "78": "Hillary Clinton",
         "79": "Cynthia McKinney",
         "80": "Pat Buchanan"
-    }
+    },
+    "endings_enabled": false,
+    "ending_data": {},
+    "mapping_enabled": false,
+    "mapping_data": {}
 }
 ]
 
