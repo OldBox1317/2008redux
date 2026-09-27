@@ -17,6 +17,16 @@ campaignTrail_temp.election_json = [
     }
 ]
 
+campaignTrail_temp.modBoxTheme = {
+    "header_color": "#2972b6",
+    "header_text_color": "	#ffffff",
+    "description_text_color": "#000000",
+    "description_background_color": "#FFFFFF",
+    "main_color": "	#1081bd",
+    "secondary_color": "#8ec582",
+    "ui_text_color": "#f9f1f1"
+}
+
 campaignTrail_temp.candidate_json = [
     {
         "model": "campaign_trail.candidate",
