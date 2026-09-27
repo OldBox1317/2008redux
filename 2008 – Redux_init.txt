@@ -522,28 +522,286 @@ campaignTrail_temp.achievements = {
     }
 }
 
-const css = `
-    #candidate_image, #running_mate_image {
-        border: none;
-        height: 265px;
-        margin: 15px 5px;
-        width: 250px;
+// Windows 7 – Taken from ICARUS then added tooltips
+function ensureStylesheet(url, id) {
+	// if an id is provided and exists, bail out
+	if (id && document.getElementById(id)) return;
+	// if a link with same href already exists, bail out
+	if (document.querySelector('link[rel="stylesheet"][href="' + url + '"]')) return;
+	const link = document.createElement('link');
+	link.rel = 'stylesheet';
+	link.href = url;
+	if (id) link.id = id;
+	document.head.appendChild(link);
+}
+
+ensureStylesheet('https://unpkg.com/7.css', 'unpkg-7css');
+
+function ensureMetaViewport() {
+    if (!document.querySelector('meta[name="viewport"]')) {
+        const m = document.createElement('meta');
+        m.name = 'viewport';
+        m.content = 'width=device-width, initial-scale=1';
+        document.head.appendChild(m);
+    }
+}
+
+applyGlobalStyles.sheets = {};
+
+function applyGlobalStyles(css, id = 'app-theme') {
+    if ('adoptedStyleSheets' in document && 'replaceSync' in CSSStyleSheet.prototype) {
+        if (!applyGlobalStyles.sheets[id]) {
+            applyGlobalStyles.sheets[id] = new CSSStyleSheet();
+            document.adoptedStyleSheets = [...document.adoptedStyleSheets, applyGlobalStyles.sheets[id]];
+        }
+        applyGlobalStyles.sheets[id].replaceSync(css);
+        return;
     }
 
-    #candidate_image img, #running_mate_image img {
-        height: 265px;
-        width: 250px;
-        object-fit: cover;
-        object-position: center;
-        outline: 8px ridge;
+    let el = document.getElementById(id);
+    if (!el) {
+        el = document.createElement('style');
+        el.id = id;
+        document.head.appendChild(el);
     }
+    el.textContent = css;
+}
+
+const css = `
+  :root {
+    --window-background: initial !important;
+    --window-background-color: initial !important;
+    --w7-w-bg: initial !important;
+  }
+
+  /* Base typography */
+  body {
+    display: flex !important;
+    font-family: "Segoe UI", Segoe, Tahoma, Geneva, Verdana, sans-serif !important;
+    color: #000000 !important;
+  }
+
+  /* General h3 styles (lower specificity) */
+  body h3 {
+    font-size: 1.17em !important;
+    font-family: inherit !important;
+    color: #000000 !important;
+  }
+
+  .custom-h3 {
+    font-size: 1.17em !important;
+    color: white !important;
+  }
+
+  h4 {
+    font-size: 1em !important;
+    font-family: inherit !important;
+    color: #000000 !important;
+  }
+
+  label {
+    font-size: 0.92em !important;
+    font-family: inherit !important;
+    color: #000000 !important;
+  }
+
+  body p {
+    font-family: inherit !important;
+    color: #000000 !important;
+  }
+
+  .custom-p {
+    color: white !important;
+  }
+
+  .overlay_window {
+    position: absolute;
+    width: 54%;
+    height: 72%;
+    top: 17%;
+    left: 25%;
+    z-index: 101;
+    
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+
+  .overlay_window h3 {
+    
+    margin: 0 !important;
+    padding: 10px !important;
+    font-size: 1.5em !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    background: rgba(23, 55, 107, 0.5) !important;
+    border-bottom: double #707070 !important;
+    border-radius: 8px 8px 0 0 !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  } 
+
+  .campaign_trail_start_emphasis {
+    background-color: #00000000;
+   }
+
+  /* Improve paragraph readability */
+  .overlay_window p {
+    color: #333 !important;
+    padding: 10px;
+  }
+
+  .inner_window_question h3 {
+    background: #e8b3b6
+  }
+
+  /* Layout components */
+  .game_header {
+    max-height: 60px;
+  }
+
+  #game_window {
+    max-width: 1000px;
+  }
+
+  #map_footer {
+    position: relative;
+    top: 20px;
+  }
+
+  .inner_window_question {
+    height: 340px;
+    position: relative;
+  }
+
+  /* Button container styles */
+  #answer_select_button,
+  #view_electoral_map
+  #headquarter_button {
+    margin-top: 12px;
+    align-self: flex-start;
+  }
+
+  #view_electoral_map,
+  #headquarter_button {
+    margin-left: 5px;
+  }
+
+  #game_window {
+    background: url(https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/Windows-Vista-Wallpaper.avif);
+  }
+  
+  label {
+    display:inline-block;
+  }
+
+  .game_header {
+    height: 0px;
+  }
+
+  .content_single li {
+    line-height: 1.39em;
+  }
+
+  input[type=radio]+label {
+    display: inline;
+  }
+
+  .inner_window_question h3 .mytooltip{
+      background-color: #81caf4;
+  }
+
+  .inner_window_w_desc {
+     border: none;
+     padding: 1em;
+  }
+
+  .mytooltip {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      background-color: #81caf4;
+  }
+
+  .mytooltip .mytooltiptext {
+      width: 240px;
+      background-color: #81caf4;
+      color: gray;
+      text-align: center;
+      border-radius: 6px;
+      padding: 10px;
+      position: absolute;
+      z-index: 99;
+      top: 100%;
+      left: 50%; 
+      transform: translateX(-50%); 
+      opacity: 0;
+      transition: opacity 0.3s;
+      border: 1px solid gray;
+      pointer-events: none;
+      font-size: 13px !important;
+      line-height: 1.5em !important;
+      font-weight: normal !important;
+      font-style: normal !important;
+  }
+
+  .mytooltip .mytooltiptext img {
+      max-width: 240px;
+      height: auto;
+  }
+
+  .mytooltip:hover .mytooltiptext {
+      opacity: 1;
+      transition-delay: 0.5s;
+  }
+
+  #final_results_description p {
+    color: gray;
+    font-family: Segoe UI;
+  }
+
+  #overall_details_container h3,
+  #overall_election_details h4,
+  #main_content_area_reading p,
+  #main_content_area_reading h3.results_tab_header,
+  .inner_window_w_desc h3 {
+    color: white;
+  }
+  
+  /* so the election summary can fit */
+  #election_summary {
+	padding-top: 0 !important;
+  }
+  
+	.custom-p button {
+	  background: initial;
+	}
+	.custom-p button:hover {
+	  background: #2c446e !important;
+	}
+	.custom-p button:before {
+	  content: none;
+	}
+	.custom-p button:disabled {
+	  background: #242a33 !important;
+	  cursor: auto !important;
+	}
+  
 `;
+
+ensureMetaViewport();
+applyGlobalStyles(css, 'mod-style');
 
 
 //#startcode
 
 
-corrr = '\n              <h2>2008 – Redux</h2>\n            ';
+corrr = '\n              <h2></h2>\n            ';
 
 
 nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#000e52";
@@ -560,6 +818,6 @@ document.getElementById("header").src = "https://file.garden/aQrk4ZgQJCx_hnkl/Hi
 
 document.body.background = "https://coolbackgrounds.io/images/backgrounds/white/pure-white-background-85a2a7fd.jpg";
 
-document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#ffffff!important;}</style>";
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#0000!important;}</style>";
 
 //#endcode
