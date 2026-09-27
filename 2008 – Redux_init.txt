@@ -76,7 +76,7 @@ campaignTrail_temp.candidate_json = [
     },
     {
         "model": "campaign_trail.candidate",
-        "pk": 79,
+        "pk": 80,
         "fields": {
             "first_name": "Pat",
             "last_name": "Buchanan",
@@ -99,7 +99,7 @@ campaignTrail_temp.candidate_json = [
     },
     {
         "model": "campaign_trail.candidate",
-        "pk": 80,
+        "pk": 79,
         "fields": {
             "first_name": "Cynthia",
             "last_name": "McKinney",
