@@ -501,7 +501,7 @@ jet_data = {
     "containerColor": "#ffffff",
     "innerWindowColor": "#ffffff",
     "bannerImageUrl": "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/NewHomeBanner",
-    "backgroundImageUrl": "https://coolbackgrounds.io/images/backgrounds/white/pure-white-background-85a2a7fd.jpg",
+    "backgroundColor": "aliceblue",
     "endingTextColor": "#000000",
     "customQuote": "",
     "gameTitle": "2008 – Redux"
