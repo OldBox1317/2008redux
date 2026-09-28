@@ -35909,7 +35909,7 @@ function initializePlayer() {
     // Add songs to playlist
     const songs = [
         new Song("Homecoming", "Kanye West (ft. Chris Martin)", "https://i.imgur.com/R1eqBUo.gif", "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/ClintonMusic/Homecoming"),
-        new Song("Walking on a Dream", "Empire of the Sun", "https://i.imgur.com/8KKKzar.gif", "https://audio.jukehost.co.uk/rSx6VDEzc1B9Ax4H3Xw4xzKKs4T5zt9B"),
+        new Song("Walking on a Dream", "Empire of the Sun", "https://i.imgur.com/8KKKzar.gif", "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/ClintonMusic/WalkingOnADream"),
         new Song("Mr. Brightside", "The Killers", "https://i.imgur.com/kIOK2FE.gif", "https://audio.jukehost.co.uk/rD8tW884kzcHZejcr1tfIK2OgemXbuTF"),
         new Song("Hot N Cold", "Katy Perry", "https://i.imgur.com/SzCK0uX.gif", "https://audio.jukehost.co.uk/cAUldU7GY3YpJD7Slp8Da49voPk6xKFm"),
         new Song("Vertigo", "U2", "https://i.imgur.com/C3Lzdfv.gif", "https://audio.jukehost.co.uk/MZZfCLu3oBkAjJGyzHac3Hi6MNVmyoW2"),
