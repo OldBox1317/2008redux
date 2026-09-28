@@ -36028,17 +36028,17 @@ function openHeadquarter() {
         // Create the menu title
         const menuTitle = document.createElement('h1');
         menuTitle.innerText = 'Campaign Internals';
-        menuTitle.style.textAlign = 'center';
             menuTitle.style.fontFamily = '"Seguoe UI", "Seguoe UI", sans-serif';
-            menuTitle.style.color = 'whitesmoke';
+            menuTitle.style.color = 'black';
         menuTitle.style.top = '-05px';   
+        menuTitle.style.background = '#aec5dd';
         menuTitle.style.position = 'relative';
-        menuTitle.style.marginTop = '-01px'; 
-        menuTitle.style.marginLeft = '-300px';
+        menuTitle.style.marginTop = '-09px'; 
+        menuTitle.style.marginLeft = '-3px';
         menuTitle.style.marginBottom = '-01px'; 
         menuTitle.style.lineHeight = '0.7';
         // menuTitle.style.backgroundColor = 'rgba(219, 208, 208, 0.5)'; 
-        menuTitle.style.padding = '2px';            
+        menuTitle.style.padding = '4px';            
         menuTitle.style.borderRadius = '1px';    
         menuTitle.style.display = 'block';     
         menuTitle.style.fontSize = '15px';
