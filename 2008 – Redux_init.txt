@@ -598,6 +598,16 @@ campaignTrail_temp.achievements = {
         "image": "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/McCainPalinAchievement",
         "description": "As John McCain, win the election with Sarah Palin as your running mate.",
         "cannotBeCheated": true
+    },
+    "HopeChangeShattered": {
+        "image": "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/HopeChangeShattered",
+        "description": "As Hillary Clinton, win the election with Barack Obama as your running mate.",
+        "cannotBeCheated": true
+    },
+    "Rmoney": {
+        "image": "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/Rmoney",
+        "description": "As John McCain, win the election with Mitt Romney as your running mate.",
+        "cannotBeCheated": true
     }
 }
 
