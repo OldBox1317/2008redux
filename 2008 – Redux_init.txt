@@ -124,21 +124,21 @@ campaignTrail_temp.candidate_json = [
         "model": "campaign_trail.candidate",
         "pk": 81,
         "fields": {
-            "first_name": "Dick",
-            "last_name": "Cheney",
+            "first_name": "Sarah",
+            "last_name": "Palin",
             "election": 9,
             "party": "Republican",
-            "state": "Wyoming",
+            "state": "Alaska",
             "priority": 5,
             "description": "''",
             "color_hex": "#FF0000",
             "secondary_color_hex": "#FFA0A0",
             "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/dick-cheney-2000.jpg",
+            "image_url": "https://www.jetsimon.com/public/static/images/dick-cheney-2000.jpg", // FIX
             "electoral_victory_message": "''",
             "electoral_loss_message": "''",
             "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>Dick Cheney is a seasoned operative of the Republican Party who has served as White House Chief of Staff, Minority Whip in Congress, Secretary of Defense, and as CEO of Halliburton. He would be a respected choice across the Republican spectrum, and would add experience and gravitas to the Republican ticket.</p>",
+            "description_as_running_mate": "<p>Governor Sarah Palin of Alaska would be an unconventional choice, but could give your ticket some female credibility, considering Clinton is the Democratic nominee.</p><p>She has been serving as Governor of Alaska since being sworn in a mere three weeks out from Christmas, where she has made significant cuts to capital funding. Prior to that, she was chair of the Alaska Oil and Gas Conservation Commission under then-Governor Frank Murkowski, whom she primaried to secure the 2006 Gubernatorial Nomination—sparking a long-running feud. Before serving on the commission, she served as Mayor of Wasilla following four years as a councillor.</p>",
             "candidate_score": 0,
             "running_mate": true
         }
@@ -147,21 +147,21 @@ campaignTrail_temp.candidate_json = [
         "model": "campaign_trail.candidate",
         "pk": 82,
         "fields": {
-            "first_name": "John",
-            "last_name": "Danforth",
+            "first_name": "Tim",
+            "last_name": "Pawlenty",
             "election": 9,
             "party": "Republican",
-            "state": "Missouri",
+            "state": "Minnesota",
             "priority": 6,
             "description": "''",
             "color_hex": "#FF0000",
             "secondary_color_hex": "#FFA0A0",
             "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/john-danforth-2000.jpg",
+            "image_url": "https://www.jetsimon.com/public/static/images/john-danforth-2000.jpg", // FIX
             "electoral_victory_message": "''",
             "electoral_loss_message": "''",
             "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>John Danforth served four terms as Senator from Missouri. He has broad experience in government, and as a moderate Republican would reinforce Bush's claim to be a uniter. Danforth also has close relationships with conservative stalwarts such as Kit Bond, Clarence Thomas, and John Ashcroft, and would not arouse undue suspicion from the conservative wing of the party. Winning Missouri back would be a key piece of any Republican victory in 2000.</p>",
+            "description_as_running_mate": "<p>TBD</p>",
             "candidate_score": 0,
             "running_mate": true
         }
@@ -180,11 +180,11 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#FF0000",
             "secondary_color_hex": "#FFA0A0",
             "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/tom-ridge-2000.jpg",
+            "image_url": "https://www.jetsimon.com/public/static/images/tom-ridge-2000.jpg", // FIX
             "electoral_victory_message": "''",
             "electoral_loss_message": "''",
             "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>Tom Ridge is the popular Governor of a large swing state. Pennsylvania's 23 electoral votes would almost ensure a Bush victory if Ridge could deliver them. He has a reputation as an able administrator and has been very tough on crime. However, he has also been pro-choice for his entire career, and his selection as running mate could cause issues with the Republican base in other regions.</p>",
+            "description_as_running_mate": "<p>Tom Ridge of Pennsylvania would be a standard, moderate choice, but runs the risk of tying yourself too much to the center and the Bush Administration.</p><p>After being elected in 1994 and re-elected in 1998 as the Governor of Pennsylvania, he was poached following 9/11 by President Bush to handle all matters regarding Homeland Security and would become the first Secretary of Homeland Security in 2003, and would serve in that role until the end of Bush’s first term in office. Prior to being Governor, he was briefly in the Army between 1969 and 1970, while also being a Member of the House of Representatives for six terms.</p>",
             "candidate_score": 0,
             "running_mate": true
         }
@@ -193,21 +193,21 @@ campaignTrail_temp.candidate_json = [
         "model": "campaign_trail.candidate",
         "pk": 84,
         "fields": {
-            "first_name": "Colin",
-            "last_name": "Powell",
+            "first_name": "Mitt",
+            "last_name": "Romney",
             "election": 9,
             "party": "Republican",
-            "state": "Virginia",
+            "state": "Massachusetts",
             "priority": 8,
             "description": "''",
             "color_hex": "#FF0000",
             "secondary_color_hex": "#FFA0A0",
             "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/colin-powell-2000.jpg",
+            "image_url": "https://www.jetsimon.com/public/static/images/colin-powell-2000.jpg", //FIX
             "electoral_victory_message": "''",
             "electoral_loss_message": "''",
             "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>Colin Powell is a moderate Republican and a key general from the Desert Storm campaign. He enjoys high personal popularity among the American electorate. He would be the first African-American to be a running mate for a major party. It will take some strong inducements to get Powell to run, however. He has repeatedly stated that he is not seeking the role, but perhaps you could persuade him by taking a moderate position on the social issues of the day.</p>",
+            "description_as_running_mate": "<p>TBD</p>",
             "candidate_score": 0,
             "running_mate": true
         }
@@ -226,11 +226,11 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#0000FF",
             "secondary_color_hex": "#90C0FF",
             "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/joe-lieberman-2000.jpg",
+            "image_url": "https://www.jetsimon.com/public/static/images/joe-lieberman-2000.jpg", // FIX
             "electoral_victory_message": "''",
             "electoral_loss_message": "''",
             "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>Joe Lieberman is a moderate Democrat and Orthodox Jew who has served as a Senator from Connecticut. He would be the first Jewish candidate or running mate from a major party. He was also a prominent critic of Bill Clinton's missteps during his time in the White House. Geographically, Lieberman could help with Gore's vote total in the critical state of Florida.</p>",
+            "description_as_running_mate": "<p>TBD</p>",
             "candidate_score": 0,
             "running_mate": true
         }
@@ -239,21 +239,21 @@ campaignTrail_temp.candidate_json = [
         "model": "campaign_trail.candidate",
         "pk": 86,
         "fields": {
-            "first_name": "Bob",
-            "last_name": "Graham",
+            "first_name": "Barack",
+            "last_name": "Obama",
             "election": 9,
             "party": "Democrat",
-            "state": "Florida",
+            "state": "Illinois",
             "priority": 10,
             "description": "''",
             "color_hex": "#0000FF",
             "secondary_color_hex": "#90C0FF",
             "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/bob-graham-2000.jpg",
+            "image_url": "https://www.jetsimon.com/public/static/images/bob-graham-2000.jpg", // FIX
             "electoral_victory_message": "''",
             "electoral_loss_message": "''",
             "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>Bob Graham is a Senator and former Governor from Florida. His popularity in that state could be crucial to a Democratic victory in 2000. He is fairly moderate and was one of Bill Clinton's top choices for running mate before Clinton went with Gore. His focus has been on the environment, education, and intelligence issues.</p>",
+            "description_as_running_mate": "<p>TBD</p>",
             "candidate_score": 0,
             "running_mate": true
         }
@@ -262,21 +262,21 @@ campaignTrail_temp.candidate_json = [
         "model": "campaign_trail.candidate",
         "pk": 87,
         "fields": {
-            "first_name": "John",
-            "last_name": "Kerry",
+            "first_name": "Joe",
+            "last_name": "Biden",
             "election": 9,
             "party": "Democrat",
-            "state": "Massachusetts",
+            "state": "Delaware",
             "priority": 11,
             "description": "''",
             "color_hex": "#0000FF",
             "secondary_color_hex": "#90C0FF",
             "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/john-kerry-2000.jpg",
+            "image_url": "https://www.jetsimon.com/public/static/images/john-kerry-2000.jpg", // FIX
             "electoral_victory_message": "''",
             "electoral_loss_message": "''",
             "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>John Kerry is a Senator from Massachusetts. He gained prominence in his youth as a Vietnam Veteran Against the War. He also won a Silver Star in that war. He is a solid liberal on the political spectrum. His home state is strongly Democratic, but his views may help the Democrats reduce the loss of support to Ralph Nader. He can also be helpful in New Hampshire.</p>",
+            "description_as_running_mate": "<p>TBD</p>",
             "candidate_score": 0,
             "running_mate": true
         }
@@ -295,11 +295,57 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#0000FF",
             "secondary_color_hex": "#90C0FF",
             "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/evan-bayh-2000.jpg",
+            "image_url": "https://www.jetsimon.com/public/static/images/evan-bayh-2000.jpg", // FIX
             "electoral_victory_message": "''",
             "electoral_loss_message": "''",
             "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>Evan Bayh is a Senator from Indiana and a former Governor. He is broadly popular in that state and is a leader of the moderate wing of the Democrats. This could help the Democrats compete in the Midwest and South, but it could also alienate the left-wing of the party and drive additional support to Ralph Nader's bid.</p>",
+            "description_as_running_mate": "<p>TBD</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 92,
+        "fields": {
+            "first_name": "Kathleen",
+            "last_name": "Sebelius",
+            "election": 9,
+            "party": "Democrat",
+            "state": "Kansas",
+            "priority": 12,
+            "description": "''",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/static/images/evan-bayh-2000.jpg", // FIX
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<p>TBD</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 91,
+        "fields": {
+            "first_name": "Tim",
+            "last_name": "Kaine",
+            "election": 9,
+            "party": "Democrat",
+            "state": "Virginia",
+            "priority": 12,
+            "description": "''",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/static/images/evan-bayh-2000.jpg", // FIX
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<p>TBD</p>",
             "candidate_score": 0,
             "running_mate": true
         }
@@ -363,6 +409,22 @@ campaignTrail_temp.running_mate_json = [
     },
     {
         "model": "campaign_trail.running_mate",
+        "pk": 575,
+        "fields": {
+            "candidate": 78,
+            "running_mate": 91
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 576,
+        "fields": {
+            "candidate": 78,
+            "running_mate": 92
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
         "pk": 56,
         "fields": {
             "candidate": 79,
@@ -381,7 +443,7 @@ campaignTrail_temp.running_mate_json = [
         "model": "campaign_trail.running_mate",
         "pk": 52,
         "fields": {
-            "candidate": 78,
+            "candidate": 77,
             "running_mate": 85
         }
     },
