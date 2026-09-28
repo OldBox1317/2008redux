@@ -35993,7 +35993,7 @@ function addHeadquarterButton() {
 
     newButton.style.marginLeft = '1.5em';
 
-    newButton.innerHTML = 'Campaign Warroom';
+    newButton.innerHTML = 'Campaign Internals';
 
     // Attach the click event listener
     newButton.addEventListener('click', openHeadquarter);
@@ -36026,7 +36026,7 @@ function openHeadquarter() {
 
         // Create the menu title
         const menuTitle = document.createElement('h1');
-        menuTitle.innerText = 'Campaign Warroom';
+        menuTitle.innerText = 'Campaign Internals';
         menuTitle.style.textAlign = 'center';
             menuTitle.style.fontFamily = '"Seguoe UI", "Seguoe UI", sans-serif';
             menuTitle.style.color = 'whitesmoke';
@@ -36132,7 +36132,7 @@ if(!Judge == 0){
     } else {
         const buttonRect = event.target.getBoundingClientRect();
         
-        // Vertically position the menu above the Warroom button
+        // Vertically position the menu above the Internals button
         popOutMenu.style.top = (buttonRect.top - popOutMenu.offsetHeight - 10) + 'px';
 
         // Horizontally center the menu relative to the button
