@@ -35673,38 +35673,613 @@ campaignTrail_temp.jet_data = [{
 
 // Non Core Junk
 
-endingConstructor = (a = 1) => {
-    if(resetPage){
-        a = 0;
-        resetPage=false;
+// Music Player
+// Music Player Classes
+class Song {
+    constructor(title, artist, coverLink, audioLink) {
+        this.title = title;
+        this.artist = artist;
+        this.coverLink = coverLink;
+        this.audioLink = audioLink;
+    }
+}
+
+class Playlist {
+    constructor() {
+        this.songs = [];
+        this.currentSongIndex = 0;
     }
 
-    difficultyTxt = $("#difficulty_mult")[0];
-    let overallVote = $("#overall_vote_statistics")[0];
-    let mapFooter = $("#map_footer")[0];
+    addSong(song) {
+        this.songs.push(song);
+    }
 
-    overallVote.style.position = "relative";
-    overallVote.style.display = "block";
-    mapFooter.style.position = "relative";
-    mapFooter.style.display = "block";
+    getCurrentSong() {
+        return this.songs[this.currentSongIndex];
+    }
 
-    $("#final_results_description")[0].innerHTML = construct(a);
-    $("#endingtxt")[0].appendChild(difficultyTxt);
-    $("#endingtxt")[0].appendChild(overallVote);
-    $("#endingtxt")[0].appendChild(mapFooter);
+    playNext() {
+        this.currentSongIndex = (this.currentSongIndex + 1) % this.songs.length;
+    }
+
+    playPrevious() {
+        this.currentSongIndex = (this.currentSongIndex - 1 + this.songs.length) % this.songs.length;
+    }
 }
 
-campaignTrail_temp.multiple_endings = true;
-campaignTrail_temp.cyoa = true
-e=campaignTrail_temp
-
-function ctsAchievement(achievement, difficultyChecker = true){
-	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
-		if(campaignTrail_temp.CTS){
-		unlockAchievement(achievement);
-	}
+// DOM Helper Functions
+function createElement(type, className, innerHTML, attributes = {}) {
+    const element = document.createElement(type);
+    if (className) element.className = className;
+    if (innerHTML) element.innerHTML = innerHTML;
+    Object.entries(attributes).forEach(([attr, value]) => element.setAttribute(attr, value));
+    return element;
 }
 
+function formatTime(seconds) {
+    if (isNaN(seconds)) return "0:00";
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+}
+
+// Player UI Functions
+function updateUI(playlist) {
+    const currentSong = playlist.getCurrentSong();
+    const player = document.getElementById("player");
+    
+    if (player) {
+        const coverElement = player.querySelector("#cover");
+        const titleElement = player.querySelector("#title");
+        const artistElement = player.querySelector("#artist");
+        
+        if (coverElement) coverElement.src = currentSong.coverLink;
+        if (titleElement) titleElement.textContent = currentSong.title;
+        if (artistElement) artistElement.textContent = currentSong.artist;
+    }
+}
+
+function setupEventListeners(playlist, audio) {
+    const playPauseButton = document.querySelector(".vista-play-btn");
+    const nextButton = document.querySelector(".vista-next-btn");
+    const prevButton = document.querySelector(".vista-prev-btn");
+    const volumeSlider = document.querySelector(".vista-volume-slider");
+    const progressTrack = document.querySelector(".vista-progress-track");
+    
+    playPauseButton?.addEventListener("click", () => {
+        if (audio.paused) {
+            audio.play().then(() => {
+                playPauseButton.innerHTML = '<img src="https://i.imgur.com/1qhhG4D.png" alt="Pause" width="40" height="40">';
+                playPauseButton.classList.add("vista-pause-btn");
+                playPauseButton.classList.remove("vista-play-btn");
+            }).catch(e => {
+                console.log("Playback prevented:", e);
+                // Show a play button to indicate user needs to interact
+                playPauseButton.innerHTML = '<img src="https://i.imgur.com/fCa72EP.png" alt="Play" width="40" height="40">';
+            });
+        } else {
+            audio.pause();
+            playPauseButton.innerHTML = '<img src="https://i.imgur.com/fCa72EP.png" alt="Play" width="40" height="40">';
+            playPauseButton.classList.add("vista-play-btn");
+            playPauseButton.classList.remove("vista-pause-btn");
+        }
+    });
+
+    nextButton?.addEventListener("click", () => {
+        playlist.playNext();
+        updateUI(playlist);
+        audio.src = playlist.getCurrentSong().audioLink;
+        audio.play().catch(e => console.log("Autoplay prevented:", e));
+    });
+
+    prevButton?.addEventListener("click", () => {
+        playlist.playPrevious();
+        updateUI(playlist);
+        audio.src = playlist.getCurrentSong().audioLink;
+        audio.play().catch(e => console.log("Autoplay prevented:", e));
+    });
+
+    volumeSlider?.addEventListener("input", (e) => {
+        const val = volumeSlider.value;
+        audio.volume = val / 100;
+        volumeSlider.style.setProperty('--volume-level', `${val}%`);
+    });
+
+    progressTrack?.addEventListener("click", (e) => {
+        const rect = progressTrack.getBoundingClientRect();
+        const pos = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = pos * audio.duration;
+    });
+
+    audio.addEventListener("timeupdate", () => {
+        const progressFill = document.querySelector(".vista-progress-fill");
+        const currentTimeDisplay = document.querySelector(".vista-current-time");
+        
+        if (progressFill) {
+            progressFill.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
+        }
+        
+        if (currentTimeDisplay) {
+            currentTimeDisplay.textContent = formatTime(audio.currentTime);
+            const durationDisplay = document.querySelector(".vista-duration");
+            if (durationDisplay && !isNaN(audio.duration)) {
+                durationDisplay.textContent = formatTime(audio.duration);
+            }
+        }
+    });
+
+    audio.addEventListener("ended", () => {
+        playlist.playNext();
+        updateUI(playlist);
+        audio.src = playlist.getCurrentSong().audioLink;
+        audio.play().catch(e => console.log("Autoplay prevented:", e));
+    });
+}
+
+function createPlayerUI() {
+    const playerContainer = createElement("div", "vista-player", "", { id: "player" });
+    
+    // Title Bar
+    playerContainer.appendChild(createElement("div", "vista-title-bar", `
+        <div class="vista-title-text">Windows Media Player</div>
+        <div class="vista-title-controls">
+            <button class="vista-minimize">
+                <svg width="10" height="1" viewBox="0 0 10 1"><rect width="10" height="1" fill="currentColor"/></svg>
+            </button>
+            <button class="vista-maximize">
+                <svg width="10" height="10" viewBox="0 0 10 10"><rect x="0.5" y="0.5" width="9" height="9" fill="none" stroke="currentColor"/></svg>
+            </button>
+            <button class="vista-close">
+                <svg width="10" height="10" viewBox="0 0 10 10"><path d="M0,0 L10,10 M10,0 L0,10" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+        </div>
+    `));
+
+    // Main Content
+    const mainContent = createElement("div", "vista-main-content");
+    const displayBox = createElement("div", "vista-display-box");
+
+    // Cover Art and Info
+    const coverElement = createElement("img", "vista-cover", "", { 
+        id: "cover",
+        alt: "Album Cover" // Added for accessibility
+    });
+    const infoContainer = createElement("div", "vista-info-container");
+    const nowPlayingLabel = createElement("div", "vista-now-playing", "Now Playing");
+    infoContainer.appendChild(nowPlayingLabel);
+    infoContainer.appendChild(createElement("div", "vista-song-info", `
+        <h3 id="title" class="vista-title">Song Title</h3>
+        <p id="artist" class="vista-artist">Artist Name</p>
+    `));
+
+    // Controls
+    const controlsContainer = createElement("div", "vista-controls-container");
+    controlsContainer.innerHTML = `
+        <div class="vista-progress-container">
+            <div class="vista-progress-bar">
+                <div class="vista-progress-track" role="slider" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+                    <div class="vista-progress-fill"></div>
+                </div>
+                <div class="vista-time-display">
+                    <span class="vista-current-time">0:00</span>
+                    <span class="vista-duration">0:00</span>
+                </div>
+            </div>
+        </div>
+        <div class="vista-controls">
+            <button class="vista-control-btn vista-prev-btn" aria-label="Previous track">
+                <img src="https://i.imgur.com/a2skFGw.png" alt="Previous" width="60" height="60">
+            </button>
+            <button class="vista-control-btn vista-play-btn" aria-label="Play/Pause">
+                <img src="https://i.imgur.com/fCa72EP.png" alt="Play" width="80" height="80">
+            </button>
+            <button class="vista-control-btn vista-next-btn" aria-label="Next track">
+                <img src="https://i.imgur.com/DZ7Igxr.png" alt="Next" width="60" height="60">
+            </button>
+        </div>
+    `;
+
+    // Volume Control
+    const volumeControl = createElement("div", "vista-volume-container", `
+        <div class="vista-volume-control">
+            <input type="range" min="0" max="100" value="50" 
+                class="vista-volume-slider" aria-label="Volume control">
+            <div class="vista-volume-icons">
+                <svg class="vista-volume-icon" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill="currentColor" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                </svg>
+                <svg class="vista-volume-icon" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                </svg>
+            </div>
+        </div>
+    `);
+
+    // Assemble Player
+    displayBox.append(coverElement, infoContainer);
+    mainContent.append(displayBox, controlsContainer);
+    playerContainer.append(mainContent, volumeControl);
+    
+    return playerContainer;
+}
+
+function initializePlayer() {
+    let playlist = new Playlist();
+    
+    // Add songs to playlist
+    const songs = [
+        new Song("Homecoming", "Kanye West (ft. Chris Martin)", "https://i.imgur.com/R1eqBUo.gif", "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/ClintonMusic/Homecoming"),
+        new Song("Walking on a Dream", "Empire of the Sun", "https://i.imgur.com/8KKKzar.gif", "https://audio.jukehost.co.uk/rSx6VDEzc1B9Ax4H3Xw4xzKKs4T5zt9B"),
+        new Song("Mr. Brightside", "The Killers", "https://i.imgur.com/kIOK2FE.gif", "https://audio.jukehost.co.uk/rD8tW884kzcHZejcr1tfIK2OgemXbuTF"),
+        new Song("Hot N Cold", "Katy Perry", "https://i.imgur.com/SzCK0uX.gif", "https://audio.jukehost.co.uk/cAUldU7GY3YpJD7Slp8Da49voPk6xKFm"),
+        new Song("Vertigo", "U2", "https://i.imgur.com/C3Lzdfv.gif", "https://audio.jukehost.co.uk/MZZfCLu3oBkAjJGyzHac3Hi6MNVmyoW2"),
+        new Song("Thunder In My Heart", "Meck feat. Leo Slayer", "https://i.imgur.com/WVh9fD3.gif", "https://audio.jukehost.co.uk/CyrL8gEJ965fVCZY8rimZrNslJesE61O"),
+        new Song("In The End", "Linkin Park", "https://i.imgur.com/afW8i15.gif", "https://audio.jukehost.co.uk/EnAFf8JaF1hEzTLyAmBWRPlxi2H8BkSr"),
+        new Song("On Melancholy Hill", "Gorillaz", "https://i.imgur.com/TDAl9HT.gif", "https://audio.jukehost.co.uk/SMMYL9tzVfimUbQAgWeym87kEFE4qziw")
+    ];
+    
+    songs.forEach(song => playlist.addSong(song));
+
+    // Create and setup audio element
+    const audio = createElement("audio", "", "", {
+        id: "audio",
+        src: playlist.getCurrentSong().audioLink
+    });
+    audio.volume = 0.5; // Set initial volume to 50%
+
+    // Create and setup player UI
+    const playerContainer = createPlayerUI();
+    document.getElementById("game_window").insertAdjacentElement("afterend", playerContainer);
+    document.body.appendChild(audio);
+
+    // Setup event listeners
+    setupEventListeners(playlist, audio);
+    updateUI(playlist);
+
+    // Set initial play/pause state
+    const playPauseButton = document.querySelector(".vista-play-btn");
+    audio.play().then(() => {
+        playPauseButton.innerHTML = '<img src="https://i.imgur.com/1qhhG4D.png" alt="Pause" width="40" height="40">';
+        playPauseButton.classList.add("vista-pause-btn");
+        playPauseButton.classList.remove("vista-play-btn");
+    }).catch(e => {
+        console.log("Autoplay prevented:", e);
+        playPauseButton.innerHTML = '<img src="https://i.imgur.com/fCa72EP.png" alt="Play" width="40" height="40">';
+    });
+
+    // Expose to window
+    window.Playlist = Playlist;
+    window.Song = Song;
+    window.changePlaylist = (newPlaylist) => {
+        playlist = newPlaylist;
+        playlist.currentSongIndex = 0;
+        updateUI(playlist);
+        audio.src = playlist.getCurrentSong().audioLink;
+        audio.play();
+    };
+    window.updateUI = updateUI;
+}
+
+// Vista-style CSS
+applyGlobalStyles.sheets = {};
+
+function applyGlobalStyles(css, id = 'app-theme') {
+    if ('adoptedStyleSheets' in document && 'replaceSync' in CSSStyleSheet.prototype) {
+        if (!applyGlobalStyles.sheets[id]) {
+            applyGlobalStyles.sheets[id] = new CSSStyleSheet();
+            document.adoptedStyleSheets = [...document.adoptedStyleSheets, applyGlobalStyles.sheets[id]];
+        }
+        applyGlobalStyles.sheets[id].replaceSync(css);
+        return;
+    }
+
+    let el = document.getElementById(id);
+    if (!el) {
+        el = document.createElement('style');
+        el.id = id;
+        document.head.appendChild(el);
+    }
+    el.textContent = css;
+}
+
+const vistaStyle = `
+.vista-player {
+    width: 960px;
+    height: 250px;
+    position: relative;
+    background: linear-gradient(to bottom, #e2e8f5 0%, #b8c7e0 100%) !important;
+    border: 1px solid #a5acb5;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
+    overflow: hidden;
+    font-family: "Segoe UI", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+}
+
+.vista-title-bar {
+    background: linear-gradient(to bottom, #4b6bc6 0%, #3a56a0 100%) !important;
+    color: white;
+    padding: 6px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #2c3f7a;
+    user-select: none;
+}
+
+.vista-title-text {
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.vista-title-controls span {
+    margin-left: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.vista-title-controls span:hover {
+    opacity: 1;
+}
+
+.vista-main-content {
+    display: flex;
+    flex: 1;
+    padding: 10px;
+}
+
+.vista-display-box {
+    flex: 1;
+    display: flex;
+    padding: 10px;
+    position: relative;
+}
+
+.vista-cover {
+    width: 180px;
+    height: 180px;
+    border: 1px solid #a5acb5;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+.vista-now-playing {
+    background: linear-gradient(to bottom, #4b6bc6 0%, #3a56a0 100%);
+    color: white;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px 3px 0 0;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    margin-bottom: -1px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.vista-info-container {
+    position: absolute;
+    left: 210px;
+    bottom: 20px;
+    width: 220px;
+}
+
+.vista-song-info {
+    background: rgba(255, 255, 255, 0.7) !important;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    height: 60px;
+}
+
+.vista-title {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: #2a3f8f;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.vista-artist {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.vista-controls-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+}
+
+.vista-progress-container {
+    margin-bottom: 15px;
+}
+
+.vista-progress-track {
+    height: 4px;
+    background: #c5cdd9;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.vista-progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, #4b6bc6 0%, #7a9ae2 100%) !important;
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.vista-time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #555;
+}
+
+.vista-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px; 
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.vista-control-btn {
+    background: transparent !important;
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: none !important;
+    padding: 0;
+    transition: transform 0.1s ease;
+}
+
+.vista-control-btn:hover {
+    transform: scale(1.05);
+}
+
+.vista-control-btn:active {
+    transform: scale(0.95);
+}
+
+.vista-prev-btn, .vista-next-btn {
+    width: 60px;
+    height: 60px;
+}
+
+.vista-prev-btn img, .vista-next-btn img {
+    width: 60px !important;
+    height: 60px !important;
+    filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.3));
+}
+
+.vista-play-btn, .vista-pause-btn {
+    width: 80px;
+    height: 80px;
+}
+
+.vista-play-btn img, .vista-pause-btn img {
+    width: auto;
+    height: 80px !important;
+    filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.3));
+}
+
+.vista-volume-container {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 140px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+}
+
+.vista-volume-control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    gap: 5px;
+}
+
+.vista-volume-slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    height: 8px;
+    margin: 0;
+    background: linear-gradient(to right, #4b6bc6 0%, #4b6bc6 var(--volume-level, 50%), #c5cdd9 var(--volume-level, 50%), #c5cdd9 100%);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.vista-volume-icons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 5px;
+}
+
+.vista-volume-icon {
+    width: 18px;
+    height: 18px;
+    color: #4b6bc6;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+
+.vista-volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid #a5acb5;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.vista-volume-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid #a5acb5;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+/* Necessry to prevent 7.css from overruing the music player buttons */
+.vista-player .vista-controls button::before,
+.vista-player .vista-controls button::after {
+    content: none !important;
+}
+.vista-title-controls button, .vista-main-content button {
+	min-width: auto;
+}
+
+`;
+
+applyGlobalStyles(vistaStyle, 'vista-player');
+
+// Initialize the player after DOM is fully loaded
+initializePlayer();
+
+
+// Achievements
 function unlockAchievement(name) {
   const ach = findAchievementByName(name);
 
