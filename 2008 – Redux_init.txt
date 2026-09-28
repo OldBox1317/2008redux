@@ -299,7 +299,7 @@ campaignTrail_temp.candidate_json = [
             "electoral_victory_message": "''",
             "electoral_loss_message": "''",
             "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>Senator Evan Bayh from Illinois is your expected pick, and could help you win back voters in the rust belt which were affected by your husband’s NAFTA deal.</p><p>After a brief primary campaign, he would very quickly withdraw and endorse you to be the Democratic nominee. This endorsement helped you narrowly cross the line in Indiana in the primaries and could very well get you there in the general. Prior to being Senator, he built up his executive branch experience serving as a two-term Governor and Secretary of State of Indiana. There are some concerns though, one in particular was that he was a co-sponsor of the act that allowed the War in Iraq and is a vocal supporter of capital punishment.</p>",
+            "description_as_running_mate": "<p>Senator Evan Bayh from Indiana is your expected pick, and could help you win back voters in the rust belt which were affected by your husband’s NAFTA deal.</p><p>After a brief primary campaign, he would very quickly withdraw and endorse you to be the Democratic nominee. This endorsement helped you narrowly cross the line in Indiana in the primaries and could very well get you there in the general. Prior to being Senator, he built up his executive branch experience serving as a two-term Governor and Secretary of State of Indiana. There are some concerns though, one in particular was that he was a co-sponsor of the act that allowed the War in Iraq and is a vocal supporter of capital punishment.</p>",
             "candidate_score": 0,
             "running_mate": true
         }
