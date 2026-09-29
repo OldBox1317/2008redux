@@ -35650,7 +35650,7 @@ campaignTrail_temp.candidate_image_url = "https://file.garden/aQrk4ZgQJCx_hnkl/H
 campaignTrail_temp.running_mate_image_url = "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/Screenshot%202026-09-27%20at%201.53.33%E2%80%AFpm.png";
 campaignTrail_temp.candidate_last_name = "Clinton";
 campaignTrail_temp.running_mate_last_name = "Bayh";
-document.getElementById("header").src = "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/Clinton%20Alternate%20Web";
+document.getElementById("header").src = "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/hillaryweb";
 
 
 
