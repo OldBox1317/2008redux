@@ -36616,7 +36616,6 @@ function openHeadquarter() {
         menuTitle.style.display = 'block';     
         menuTitle.style.fontSize = '15px';
         menuTitle.style.fontWeight = '100';
-        // menuTitle.style.outline = '1px solid #0F0E0C';
         popOutMenu.appendChild(menuTitle);
 
         const ov = document.createElement('h2');
