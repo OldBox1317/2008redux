@@ -35910,12 +35910,9 @@ function initializePlayer() {
     const songs = [
         new Song("Homecoming", "Kanye West (ft. Chris Martin)", "https://i.imgur.com/R1eqBUo.gif", "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/ClintonMusic/Homecoming"),
         new Song("Walking on a Dream", "Empire of the Sun", "https://i.imgur.com/8KKKzar.gif", "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/ClintonMusic/WalkingOnADream"),
-        new Song("Mr. Brightside", "The Killers", "https://i.imgur.com/kIOK2FE.gif", "https://audio.jukehost.co.uk/rD8tW884kzcHZejcr1tfIK2OgemXbuTF"),
+        new Song("Low", "Flo Rida (ft. T Pain)", "https://i.imgur.com/kIOK2FE.gif", "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/Low"),
         new Song("Hot N Cold", "Katy Perry", "https://i.imgur.com/SzCK0uX.gif", "https://audio.jukehost.co.uk/cAUldU7GY3YpJD7Slp8Da49voPk6xKFm"),
-        new Song("Vertigo", "U2", "https://i.imgur.com/C3Lzdfv.gif", "https://audio.jukehost.co.uk/MZZfCLu3oBkAjJGyzHac3Hi6MNVmyoW2"),
-        new Song("Thunder In My Heart", "Meck feat. Leo Slayer", "https://i.imgur.com/WVh9fD3.gif", "https://audio.jukehost.co.uk/CyrL8gEJ965fVCZY8rimZrNslJesE61O"),
-        new Song("In The End", "Linkin Park", "https://i.imgur.com/afW8i15.gif", "https://audio.jukehost.co.uk/EnAFf8JaF1hEzTLyAmBWRPlxi2H8BkSr"),
-        new Song("On Melancholy Hill", "Gorillaz", "https://i.imgur.com/TDAl9HT.gif", "https://audio.jukehost.co.uk/SMMYL9tzVfimUbQAgWeym87kEFE4qziw")
+        new Song("Umbrella", "Rihanna (ft. Jay Z)", "https://i.imgur.com/C3Lzdfv.gif", "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/ClintonMusic/Rihanna")
     ];
     
     songs.forEach(song => playlist.addSong(song));
