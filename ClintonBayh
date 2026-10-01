@@ -1620,21 +1620,21 @@ campaignTrail_temp.issues_json = [
         "model": "campaign_trail.issue",
         "pk": 27,
         "fields": {
-            "name": "Budget Surplus",
-            "description": 0,
-            "stance_1": "Very Conservative",
+            "name": "Economy",
+            "description": "With the ongoing financial crisis, states have been categorised into four categories: stable, struggling, dying and destroyed.",
+            "stance_1": "Destroyed",
             "stance_desc_1": 0,
-            "stance_2": "Conservative",
+            "stance_2": "Dying",
             "stance_desc_2": 0,
-            "stance_3": "Conservative",
+            "stance_3": "Dying",
             "stance_desc_3": 0,
-            "stance_4": "Moderate",
+            "stance_4": "Stuggling",
             "stance_desc_4": 0,
-            "stance_5": "Liberal",
+            "stance_5": "Struggling",
             "stance_desc_5": 0,
-            "stance_6": "Liberal",
+            "stance_6": "Stable",
             "stance_desc_6": 0,
-            "stance_7": "Very Liberal",
+            "stance_7": "Stable",
             "stance_desc_7": 0,
             "election": 9
         }
@@ -1735,12 +1735,12 @@ campaignTrail_temp.issues_json = [
 
 campaignTrail_temp.state_issue_score_json = [
     {
-        "model": "campaign_trail.state_issue_score",
+        "model": "campaign_trail.state_issue_score", // GFC Impact - Dying
         "pk": 868,
         "fields": {
             "state": 181,
-            "issue": 27,
-            "state_issue_score": -0.55,
+            "issue": 27, // Alabama
+            "state_issue_score": -0.35,
             "weight": 1
         }
     },
@@ -1785,12 +1785,12 @@ campaignTrail_temp.state_issue_score_json = [
         }
     },
     {
-        "model": "campaign_trail.state_issue_score",
+        "model": "campaign_trail.state_issue_score", //Alaska GFC
         "pk": 873,
         "fields": {
-            "state": 182,
+            "state": 182, // Alaska
             "issue": 27,
-            "state_issue_score": -0.485,
+            "state_issue_score": 0.35,
             "weight": 1
         }
     },
@@ -1835,12 +1835,12 @@ campaignTrail_temp.state_issue_score_json = [
         }
     },
     {
-        "model": "campaign_trail.state_issue_score",
+        "model": "campaign_trail.state_issue_score", // Arizona
         "pk": 878,
         "fields": {
             "state": 183,
             "issue": 27,
-            "state_issue_score": -0.285,
+            "state_issue_score": -0.75,
             "weight": 1
         }
     },
@@ -1885,12 +1885,12 @@ campaignTrail_temp.state_issue_score_json = [
         }
     },
     {
-        "model": "campaign_trail.state_issue_score",
+        "model": "campaign_trail.state_issue_score", // Arkansas
         "pk": 883,
         "fields": {
             "state": 184,
             "issue": 27,
-            "state_issue_score": -0.302,
+            "state_issue_score": 0.35,
             "weight": 1
         }
     },
@@ -1935,12 +1935,12 @@ campaignTrail_temp.state_issue_score_json = [
         }
     },
     {
-        "model": "campaign_trail.state_issue_score",
+        "model": "campaign_trail.state_issue_score", // California
         "pk": 888,
         "fields": {
             "state": 185,
             "issue": 27,
-            "state_issue_score": 0.351,
+            "state_issue_score": -0.75,
             "weight": 1
         }
     },
@@ -4293,7 +4293,7 @@ campaignTrail_temp.candidate_issue_score_json = [
         "fields": {
             "candidate": 77,
             "issue": 27,
-            "issue_score": -0.5
+            "issue_score": 0
         }
     },
     {
@@ -4338,7 +4338,7 @@ campaignTrail_temp.candidate_issue_score_json = [
         "fields": {
             "candidate": 78,
             "issue": 27,
-            "issue_score": 0.4
+            "issue_score": 0
         }
     },
     {
@@ -4383,7 +4383,7 @@ campaignTrail_temp.candidate_issue_score_json = [
         "fields": {
             "candidate": 79,
             "issue": 27,
-            "issue_score": 0.75
+            "issue_score": 0
         }
     },
     {
@@ -4428,7 +4428,7 @@ campaignTrail_temp.candidate_issue_score_json = [
         "fields": {
             "candidate": 80,
             "issue": 27,
-            "issue_score": -0.85
+            "issue_score": 0
         }
     },
     {
