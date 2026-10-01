@@ -562,7 +562,7 @@ jet_data = {
     "windowColor": "#ffffff",
     "containerColor": "#ffffff",
     "innerWindowColor": "#ffffff",
-    "bannerImageUrl": "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/NewHomeBanner",
+    "bannerImageUrl": "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/google",
     "backgroundColor": "aliceblue",
     "endingTextColor": "#000000",
     "customQuote": "",
@@ -913,7 +913,7 @@ $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selected
 
 $(".container")[0].style.backgroundColor = "#ffffff";
 
-document.getElementById("header").src = "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/NewHomeBanner";
+document.getElementById("header").src = "https://file.garden/aQrk4ZgQJCx_hnkl/HillaryMcCain/google";
 
 document.body.background = "https://coolbackgrounds.io/images/backgrounds/white/pure-white-background-85a2a7fd.jpg";
 
