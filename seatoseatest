@@ -3,21 +3,20 @@ e=campaignTrail_temp
 e.shining_info = [
     {
         pk: 21,
-        candidate: 300,
+        candidate: 78, // Clinton
         fundraising_effect: 1,
         ad_effect: 1,
         opponent_visit_effect: 1,
         staff: [
             {
                 pk: 6000,
-                name: "Bob Baur",
-                image: "/static/sea_to_sea/2020/biden/baur.png",
-                description: "<p><em>Debate Coach</em>: Will highlight the best debate answer.</p><p>An attorney for the campaign and a White House Counsel for the Obama Administration who's willing to prep you for the debates against Donald Trump, which could be chaotic if you are unable to command the stage.</p>",
-                cost: 20000000,
+                name: "Thomas E. Donilon",
+                image: "/static/sea_to_sea/2020/biden/baur.png", // FIX
+                description: "<p><em>Debate Coach</em>: Provide you with debate tips which will hint you towards the right answer.</p><p>Serving as chief of staff to Secretary of State under your husband's tenure, he previously worked on Obama's campaign and gave him debating advice. He has now gone to work in the private sector, but would be willing to come back and assist you in exchange for some cash.</p>",
+                cost: 15000000, // Adjusted
                 hired: false,
                 execute: () => {
-                    // this will only work to highlight base 2020 biden's best debate answer. if you want to use this code for another scenario, you'll need to change the answer pk.
-                    e.answers_json.find(f=>f.pk===6078).fields.description = `<span style='color:green'>${e.answers_json.find(f=>f.pk===6078).fields.description}</span>`
+                    e.answers_json.find(f=>f.pk===6078).fields.description = `<span style='color:green'>${e.answers_json.find(f=>f.pk===6078).fields.description}</span>` // Will need to be fixed
                 }
             },
             {
