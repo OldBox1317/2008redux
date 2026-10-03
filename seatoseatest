@@ -21,9 +21,9 @@ e.shining_info = [
             },
             {
                 pk: 6001,
-                name: "Ron Klain",
-                image: "/static/sea_to_sea/2020/biden/klain.png",
-                description: "<p><em>Kingmaker</em>: Upon being hired your relationship with all lobbies with which you already have a positive relationship will be increased by 10.</p><p>A longtime advisor of yours, Ron Klain is eager to get into the White House, and will use his connections in Washington to get you there.</p>",
+                name: "George Stephanopoulos",
+                image: "/static/sea_to_sea/2020/biden/klain.png", // FIX
+                description: "<p><em>Media Powerbroker</em>: Hiring Stephanopoulos will ensure your image in the media remains positive.</p>", // EXPAND
                 cost: 10000000,
                 hired: false,
                 execute: () => {
@@ -38,9 +38,9 @@ e.shining_info = [
             },
             {
                 pk: 6002,
-                name: "Jeffrey Katzenberg",
-                image: "/static/sea_to_sea/2020/biden/katzenberg.png",
-                description: "<p><em>Fundraiser</em>: Permanently increases the effectiveness of fundraising.</p><p>The former CEO of Dreamworks, Katzenberg has spent his whole life bringing dreams to life. You've always dreamed of the White House, haven't you?  With a little cash, he can help that dream come true.</p>",
+                name: "Donald Sussman",
+                image: "/static/sea_to_sea/2020/biden/katzenberg.png", //FIX
+                description: "<p><em>Dollar Signs</em>: Permanently increases the effectiveness of fundraising.</p><p>The former CEO of Dreamworks, Katzenberg has spent his whole life bringing dreams to life. You've always dreamed of the White House, haven't you?  With a little cash, he can help that dream come true.</p>",
                 cost: 15000000,
                 hired: false,
                 execute: () => {
