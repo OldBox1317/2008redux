@@ -1738,8 +1738,8 @@ campaignTrail_temp.state_issue_score_json = [
         "model": "campaign_trail.state_issue_score", // GFC Impact - Dying
         "pk": 868,
         "fields": {
-            "state": 181,
-            "issue": 27, // Alabama
+            "state": 181, // Alabama done
+            "issue": 27,
             "state_issue_score": -0.35,
             "weight": 1
         }
@@ -1985,12 +1985,12 @@ campaignTrail_temp.state_issue_score_json = [
         }
     },
     {
-        "model": "campaign_trail.state_issue_score",
+        "model": "campaign_trail.state_issue_score", // COLORADO
         "pk": 893,
         "fields": {
             "state": 186,
             "issue": 27,
-            "state_issue_score": -0.086,
+            "state_issue_score": 0,
             "weight": 1
         }
     },
@@ -2035,12 +2035,12 @@ campaignTrail_temp.state_issue_score_json = [
         }
     },
     {
-        "model": "campaign_trail.state_issue_score",
+        "model": "campaign_trail.state_issue_score", // CT
         "pk": 898,
         "fields": {
             "state": 187,
             "issue": 27,
-            "state_issue_score": 0.467,
+            "state_issue_score": 0,
             "weight": 1
         }
     },
@@ -2085,12 +2085,12 @@ campaignTrail_temp.state_issue_score_json = [
         }
     },
     {
-        "model": "campaign_trail.state_issue_score",
+        "model": "campaign_trail.state_issue_score", // Delaware
         "pk": 903,
         "fields": {
             "state": 188,
             "issue": 27,
-            "state_issue_score": 0.278,
+            "state_issue_score": 0,
             "weight": 1
         }
     },
@@ -2135,12 +2135,12 @@ campaignTrail_temp.state_issue_score_json = [
         }
     },
     {
-        "model": "campaign_trail.state_issue_score",
+        "model": "campaign_trail.state_issue_score", // Florida
         "pk": 908,
         "fields": {
             "state": 189,
             "issue": 27,
-            "state_issue_score": -0.045,
+            "state_issue_score": -0.75,
             "weight": 1
         }
     },
@@ -2185,12 +2185,12 @@ campaignTrail_temp.state_issue_score_json = [
         }
     },
     {
-        "model": "campaign_trail.state_issue_score",
+        "model": "campaign_trail.state_issue_score", // Georgia
         "pk": 913,
         "fields": {
             "state": 190,
             "issue": 27,
-            "state_issue_score": -0.33,
+            "state_issue_score": -0.35,
             "weight": 1
         }
     },
@@ -2235,12 +2235,12 @@ campaignTrail_temp.state_issue_score_json = [
         }
     },
     {
-        "model": "campaign_trail.state_issue_score",
+        "model": "campaign_trail.state_issue_score", // Hawaii
         "pk": 918,
         "fields": {
             "state": 191,
             "issue": 27,
-            "state_issue_score": 0.602,
+            "state_issue_score": 0,
             "weight": 1
         }
     },
